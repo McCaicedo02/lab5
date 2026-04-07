@@ -1,0 +1,67 @@
+<%- include("partials/header") %>
+
+<section class="archive-stage">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <div class="hero-card shadow-lg">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <div>
+              <p class="eyebrow mb-2">Archive Results</p>
+              <h1 class="display-6 app-title mb-0"><%= heading %></h1>
+            </div>
+            <a href="/" class="btn btn-outline-secondary">Back to Search</a>
+          </div>
+
+          <% if (!quotes.length) { %>
+            <div class="empty-state">
+              <h2 class="h4 mb-2">No records found</h2>
+              <p class="mb-0">The archive is quiet here. Try another search and open a different shelf.</p>
+            </div>
+          <% } %>
+
+          <div class="results-grid">
+            <% quotes.forEach(item => { %>
+              <article class="quote-card">
+                <blockquote class="quote-text mb-3">"<%= item.quote %>"</blockquote>
+                <div class="results-meta d-flex flex-wrap gap-2 align-items-center mb-3">
+                  <span class="badge text-bg-light border">Category: <%= item.category || "Uncategorized" %></span>
+                  <span class="badge text-bg-light border">Likes: <%= item.likes ?? 0 %></span>
+                </div>
+                <p class="mb-0">
+                  <a
+                    href="#"
+                    class="author-link"
+                    id="<%= item.authorId %>"
+                    data-bs-toggle="modal"
+                    data-bs-target="#authorModal"
+                  >
+                    <%= item.authorName %>
+                  </a>
+                </p>
+              </article>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="authorModal" tabindex="-1" aria-labelledby="authorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content author-modal">
+      <div class="modal-header border-0 pb-0">
+        <h2 class="modal-title h4" id="authorModalLabel">Archive Record</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="authorInfo">
+          <div class="text-center py-4">Select an author to reveal the archive card.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
