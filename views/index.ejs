@@ -1,0 +1,87 @@
+<%- include("partials/header") %>
+
+<section class="archive-stage">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <div class="hero-card shadow-lg">
+          <div class="archive-intro text-center mb-5">
+            <p class="eyebrow">CST 336 Lab 5</p>
+            <h1 class="display-5 app-title">Quote Finder</h1>
+            <p class="lead app-subtitle">
+              Explore a candlelit archive of memorable lines, hidden wisdom, and legendary voices.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <form action="/searchByKeyword" method="get" class="search-card h-100">
+                <h2 class="h5 mb-3">Search by Keyword</h2>
+                <label for="keyword" class="form-label">Keyword</label>
+                <input type="text" class="form-control form-control-lg" id="keyword" name="keyword" placeholder="Whisper a word or phrase">
+                <button type="submit" class="btn btn-primary w-100 mt-3">Search Quotes</button>
+              </form>
+            </div>
+
+            <div class="col-md-6">
+              <form action="/searchByAuthor" method="get" class="search-card h-100">
+                <h2 class="h5 mb-3">Search by Author</h2>
+                <label for="authorId" class="form-label">Author</label>
+                <select class="form-select form-select-lg" id="authorId" name="authorId" required>
+                  <option value="">Choose an author</option>
+                  <% authors.forEach(author => { %>
+                    <option value="<%= author.authorId %>">
+                      <%= author.lastName %>, <%= author.firstName %>
+                    </option>
+                  <% }) %>
+                </select>
+                <button type="submit" class="btn btn-outline-primary w-100 mt-3">Find Author Quotes</button>
+              </form>
+            </div>
+
+            <div class="col-md-6">
+              <form action="/searchByCategory" method="get" class="search-card h-100">
+                <h2 class="h5 mb-3">Search by Category</h2>
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select form-select-lg" id="category" name="category" required>
+                  <option value="">Choose a category</option>
+                  <% categories.forEach(item => { %>
+                    <option value="<%= item.category %>"><%= item.category %></option>
+                  <% }) %>
+                </select>
+                <button type="submit" class="btn btn-outline-primary w-100 mt-3">Browse Category</button>
+              </form>
+            </div>
+
+            <div class="col-md-6">
+              <form action="/searchByLikes" method="get" class="search-card h-100">
+                <h2 class="h5 mb-3">Search by Likes</h2>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="minLikes" class="form-label">Minimum Likes</label>
+                    <input type="number" class="form-control form-control-lg" id="minLikes" name="minLikes" min="0" value="0">
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="maxLikes" class="form-label">Maximum Likes</label>
+                    <input type="number" class="form-control form-control-lg" id="maxLikes" name="maxLikes" min="0" value="100">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mt-3">Filter by Likes</button>
+              </form>
+            </div>
+          </div>
+
+          <p class="archive-note">
+            Every search opens another shelf in the archive.
+          </p>
+
+          <div class="text-center mt-4">
+            <a href="/dbTest" class="btn btn-link utility-link">Run Database Test</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("partials/footer") %>
