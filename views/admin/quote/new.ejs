@@ -1,0 +1,57 @@
+<%- include("../../partials/header") %>
+
+<section class="archive-stage">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <div class="hero-card shadow-lg">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <div>
+              <p class="eyebrow mb-2">Admin Panel</p>
+              <h1 class="display-6 app-title mb-0">Add Quote</h1>
+            </div>
+            <a href="/quotes" class="btn btn-outline-secondary">Back to Quotes</a>
+          </div>
+
+          <form action="/quote/new" method="post" class="search-card">
+            <div class="mb-3">
+              <label for="quote" class="form-label">Quote</label>
+              <textarea class="form-control form-control-lg" id="quote" name="quote" rows="4" required></textarea>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="authorId" class="form-label">Author</label>
+                <select class="form-select form-select-lg" id="authorId" name="authorId" required>
+                  <option value="">Choose an author</option>
+                  <% authors.forEach(author => { %>
+                    <option value="<%= author.authorId %>"><%= author.lastName %>, <%= author.firstName %></option>
+                  <% }) %>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="category" class="form-label">Category</label>
+                <input class="form-control form-control-lg" list="categoryOptions" id="category" name="category">
+                <datalist id="categoryOptions">
+                  <% categories.forEach(item => { %>
+                    <option value="<%= item.category %>"></option>
+                  <% }) %>
+                </datalist>
+              </div>
+
+              <div class="col-md-6">
+                <label for="likes" class="form-label">Likes</label>
+                <input type="number" class="form-control form-control-lg" id="likes" name="likes" min="0" value="0">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-4">Save Quote</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("../../partials/footer") %>

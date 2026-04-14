@@ -1,0 +1,49 @@
+<%- include("../partials/header") %>
+
+<section class="archive-stage">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-9">
+        <div class="hero-card shadow-lg">
+          <div class="archive-intro text-center mb-5">
+            <p class="eyebrow">Admin Panel</p>
+            <h1 class="display-5 app-title">Quote Finder Admin</h1>
+            <p class="lead app-subtitle">
+              Add, update, and remove authors and quotes without affecting the public search pages.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="search-card h-100 text-center">
+                <h2 class="h5 mb-3">Author Tools</h2>
+                <p class="mb-4">Create new author records or manage existing ones.</p>
+                <div class="d-grid gap-2">
+                  <a href="/author/new" class="btn btn-primary">Add Author</a>
+                  <a href="/authors" class="btn btn-outline-primary">List Authors</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="search-card h-100 text-center">
+                <h2 class="h5 mb-3">Quote Tools</h2>
+                <p class="mb-4">Create new quotes or edit and delete saved ones.</p>
+                <div class="d-grid gap-2">
+                  <a href="/quote/new" class="btn btn-primary">Add Quote</a>
+                  <a href="/quotes" class="btn btn-outline-primary">List Quotes</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="/" class="btn btn-link utility-link">Back to Public Search</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("../partials/footer") %>
